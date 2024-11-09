@@ -200,9 +200,7 @@ public partial class SpaerPartsPage : ContentView
             await Task.Run(async () =>
             {
                 _currentPageData = await _databaseServices.PerformSearchAsync(descriptionAR , model , matrialGroup , sapCode , partNo , c1).ConfigureAwait(false);
-               
-                await MessageService.ShowMessage("خطأ: " , "_currentPageData:"+ _currentPageData.Count , Colors.IndianRed , true);
-
+             
                 Device.InvokeOnMainThreadAsync(async () =>
                {
                    DisplayResults(_currentPageData , _currentPageIndex);
