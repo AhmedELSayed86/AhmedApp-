@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AhmedApp.Views.BasePage"
+    BackgroundColor="Black"
+    FlowDirection="RightToLeft"
+    Loaded="ContentPage_Loaded"
+    Title="BasePage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="100*" />
+            <RowDefinition
+                Height="50" />
+        </Grid.RowDefinitions>
+        <!-- مكان المحتوى الإضافي للصفحة المشتقة -->
+        <ContentPresenter
+            Grid.Row="0"
+            x:Name="ContentPresenter" />
+        <!-- Label المشترك في جميع الصفحات -->
+        <StackLayout
+            Orientation="Horizontal"
+            Grid.Row="1">
+            <Button
+                x:Name="BtnBack"
+                Text="←"
+                Margin="10,0,0,0"
+                HorizontalOptions="Start"
+                Clicked="GoBackPage" />
+            <Border
+                x:Name="borderLblMessage"
+                Stroke="Black"
+                StrokeThickness="2"
+                Grid.Row="9"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                x:FieldModifier="public">
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer
+                        NumberOfTapsRequired="2"
+                        Tapped="OnBorderDoubleTapped" />
+                </Border.GestureRecognizers>
+                <Label
+                    x:Name="MessagesLabel"
+                    BackgroundColor="Black"
+                    x:FieldModifier="public"/>
+            </Border>
+        </StackLayout>
+    </Grid>
+</ContentPage>

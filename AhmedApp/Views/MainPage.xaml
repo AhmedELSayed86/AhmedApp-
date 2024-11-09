@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AhmedApp.Views.MainPage">
+    <ScrollView>
+        <VerticalStackLayout
+            Padding="30,0"
+            Spacing="25">
+            <!-- مربع اختيار لتفعيل الوضع المظلم -->
+            <!--<HorizontalStackLayout
+                Padding="0"
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand">
+                <CheckBox
+                    x:Name="darkModeCheckBox"
+                    Color="{DynamicResource CheckBoxColor}"
+                    CheckedChanged="OnCheckBoxCheckedChanged" />
+                <Label
+                    x:Name="statusLabel"
+                    Text="OFF"
+                    TextColor="{DynamicResource LabelTextColor}"
+                    FontSize="Large">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="OnLabelTapped" />
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label
+                    Padding="50,0,0,0"
+                    Text="الوضع الداكن"
+                    TextColor="{DynamicResource LabelTextColor}"
+                    FontSize="Large"
+                    HorizontalTextAlignment="Center"
+                    HorizontalOptions="End" />
+            </HorizontalStackLayout>-->
+            <Image
+                Source="maintenance96px.png"
+                HeightRequest="150"
+                Aspect="AspectFit"
+                Margin="10"
+                SemanticProperties.Description="dot net bot in a race car number eight" />
+            <Label
+                Text="مرحبا بكم انا احمد السيد"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1"
+                Margin="10" />
+            <Label
+                Text="وهذا تطبيقي لتسهيل عملية البحث"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2"
+                SemanticProperties.Description="Welcome to dot net Multi platform App U I" />
+            <Button
+                Text="البحث"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OpenSpaerPart"
+                HorizontalOptions="Fill" />
+            <Button
+                Text="الإعدادات"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Clicked="OpenCopyToExcel"
+                HorizontalOptions="Fill" />
+            <ActivityIndicator
+                x:Name="LoadingIndicator"
+                IsRunning="False"
+                IsVisible="False"
+                Color="LimeGreen"
+                HorizontalOptions="Center"
+                VerticalOptions="Center" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentView>

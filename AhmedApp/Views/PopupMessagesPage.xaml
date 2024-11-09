@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="AhmedApp.Views.PopupMessagesPage"
+    Title="PopupMessagesPage">
+    <Grid
+        RowDefinitions="50,*,50">
+        <Label
+            Grid.Row="0"
+            HorizontalOptions="CenterAndExpand"
+            VerticalOptions="CenterAndExpand"
+            Text="الرسائل المخزنة"
+            TextColor="Orange"
+            FontSize="Large" />
+        <ScrollView
+            Grid.Row="1" Orientation="Both"
+            VerticalOptions="StartAndExpand"
+            VerticalScrollBarVisibility="Always"
+            HorizontalScrollBarVisibility="Always">
+            <CollectionView
+                x:Name="CollectionMessages" 
+                VerticalScrollBarVisibility="Always"
+                HorizontalScrollBarVisibility="Always"
+                Margin="10"
+                SelectionMode="Single"
+                x:FieldModifier="public">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <HorizontalStackLayout >
+                            <Label
+                                Text="{Binding Title}"
+                                TextColor="{Binding MyColor}"
+                                BackgroundColor="Black"
+                                Padding="10" />
+                            <Label
+                                Text=": "
+                                TextColor="Yellow"
+                                BackgroundColor="Black"
+                                Padding="0,10,0,0"  />
+                            <Editor
+                                Text="{Binding Content}"
+                                TextColor="{Binding MyColor}"
+                                BackgroundColor="Black"
+                               IsReadOnly="False"  />
+                        </HorizontalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+        <Button
+            Grid.Row="2"
+            Text="اغلاق"
+            FontSize="Large"
+            FontAttributes="Bold"
+            TextColor="OrangeRed"
+            Clicked="Button_Clicked" />
+    </Grid>
+</ContentPage>

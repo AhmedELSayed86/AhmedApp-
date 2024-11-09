@@ -1,0 +1,413 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AhmedApp.Views"
+    x:Class="AhmedApp.Views.SpaerPartsPage">
+    <!-- الشبكة الأساسية لتقسيم الصفحة -->
+    <Grid
+        Padding="5"
+        BackgroundColor="Black">
+        <!-- تقسيم الصفحة إلى 3 صفوف: أدوات البحث، الفاصل، الجدول -->
+        <Grid.RowDefinitions>
+            <RowDefinition
+                Height="Auto" />
+            <RowDefinition
+                Height="3" />
+            <RowDefinition
+                Height="*" />
+            <RowDefinition
+                Height="50" />
+        </Grid.RowDefinitions>
+        <!-- أدوات البحث في الصف الأول -->
+        <FlexLayout
+            Grid.Row="0"
+            Direction="Row"
+            Wrap="Wrap"
+            JustifyContent="Start"
+            AlignItems="Center"
+            Margin="5">
+            <Border
+                Stroke="YellowGreen"
+                WidthRequest="90"
+                StrokeThickness="2"
+                Padding="5">
+                <Entry
+                    x:Name="SearchNameEntry"
+                    Placeholder="بحث بالاسم..."
+                    Completed="OnEntryCompleted" />
+            </Border>
+            <Border
+                Stroke="YellowGreen"
+                WidthRequest="90"
+                StrokeThickness="2"
+                Padding="5">
+                <Entry
+                    x:Name="SearchModelEntry"
+                    Placeholder="بحث بالموديل..."
+                    Completed="OnEntryCompleted" />
+            </Border>
+            <Border
+                Stroke="YellowGreen"
+                WidthRequest="90"
+                StrokeThickness="2"
+                Padding="5">
+                <Entry
+                    x:Name="SearchGropEntry"
+                    Placeholder="بحث بالمجموعة..."
+                    Completed="OnEntryCompleted" />
+            </Border>
+            <Border
+                Stroke="YellowGreen"
+                WidthRequest="90"
+                StrokeThickness="2"
+                Padding="5">
+                <Entry
+                    x:Name="SearchCodeEntry"
+                    Placeholder="بحث بالكود..."
+                    Completed="OnEntryCompleted"
+                    Keyboard="Numeric" />
+            </Border>
+            <Border
+                Stroke="YellowGreen"
+                WidthRequest="90"
+                StrokeThickness="2"
+                Padding="5">
+                <Entry
+                    x:Name="SearchPartNoEntry"
+                    Placeholder="بحث بالسيريل..."
+                    Completed="OnEntryCompleted" />
+            </Border>
+            <Border
+                Stroke="YellowGreen"
+                WidthRequest="90"
+                StrokeThickness="2"
+                Padding="5">
+                <Entry
+                    x:Name="SearchC1Entry"
+                    Placeholder="بحث بالسعر..."
+                    Completed="OnEntryCompleted" />
+            </Border>
+            <Button
+                Text="بحث"
+                TextColor="White"
+                FontSize="16"
+                FontAttributes="Bold"
+                HeightRequest="40"
+                WidthRequest="60"
+                Margin="2"
+                BackgroundColor="#4CAF50"
+                CornerRadius="10"
+                Clicked="OnSearchButtonClicked" />
+        </FlexLayout>
+        <!-- فاصل بين البحث والجدول -->
+        <Line
+            Grid.Row="1"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            X1="0"
+            Y1="0"
+            X2="700"
+            Y2="0"
+            Stroke="OrangeRed"
+            StrokeThickness="2" />
+        <!-- عرض الجدول في الصف الثالث -->
+        <ScrollView
+            Grid.Row="2"
+            Orientation="Horizontal"
+            HorizontalScrollBarVisibility="Always"
+            VerticalScrollBarVisibility="Always">
+            <Grid
+                Grid.Row="2"
+                Padding="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="Auto" />
+                    <RowDefinition
+                        Height="*" />
+                    <RowDefinition
+                        Height="Auto" />
+                </Grid.RowDefinitions>
+                <!-- صف رؤوس الجدول -->
+                <Grid
+                    Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="100" />
+                        <ColumnDefinition
+                            Width="200" />
+                        <ColumnDefinition
+                            Width="50" />
+                        <ColumnDefinition
+                            Width="200" />
+                        <ColumnDefinition
+                            Width="200" />
+                        <ColumnDefinition
+                            Width="200" />
+                        <ColumnDefinition
+                            Width="50" />
+                        <ColumnDefinition
+                            Width="200" />
+                    </Grid.ColumnDefinitions>
+                    <!-- رؤوس الأعمدة -->
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3">
+                        <Label
+                            Text="SapCode"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="1">
+                        <Label
+                            Text="DescriptionAR"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="2">
+                        <Label
+                            Text="C1"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="3">
+                        <Label
+                            Text="Model"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="4">
+                        <Label
+                            Text="MatrialGroup"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="5">
+                        <Label
+                            Text="DescriptionEN"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="6">
+                        <Label
+                            Text="IsDamaged"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                    <Border
+                        Stroke="Green"
+                        StrokeThickness="2"
+                        Padding="3"
+                        Grid.Column="7">
+                        <Label
+                            Text="PartNo"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            FontAttributes="Bold" />
+                    </Border>
+                </Grid>
+                <!-- محتوى البيانات القابل للتمرير -->
+                <CollectionView
+                    x:Name="DataCollectionView"
+                    ItemsSource="{Binding _currentPageData}"
+                    Grid.Row="1">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition
+                                        Width="100" />
+                                    <ColumnDefinition
+                                        Width="200" />
+                                    <ColumnDefinition
+                                        Width="50" />
+                                    <ColumnDefinition
+                                        Width="200" />
+                                    <ColumnDefinition
+                                        Width="200" />
+                                    <ColumnDefinition
+                                        Width="200" />
+                                    <ColumnDefinition
+                                        Width="50" />
+                                    <ColumnDefinition
+                                        Width="200" />
+                                </Grid.ColumnDefinitions>
+                                <!--عرض البيانات لكل عمود-->
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3">
+                                    <Entry
+                                        IsReadOnly="True"
+                                        Text="{Binding SapCode}" FontSize="15"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="1">
+                                    <Label
+                                        Text="{Binding DescriptionAR}"
+                                        LineBreakMode="WordWrap"
+                                        FontSize="16"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="2">
+                                    <Label
+                                        Text="{Binding C1}"
+                                        LineBreakMode="WordWrap"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="3">
+                                    <Label
+                                        Text="{Binding Model}"
+                                        LineBreakMode="WordWrap"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="4">
+                                    <Label
+                                        Text="{Binding MatrialGroup}"
+                                        LineBreakMode="WordWrap"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="5">
+                                    <Label
+                                        Text="{Binding DescriptionEN}"
+                                        LineBreakMode="WordWrap"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="6">
+                                    <Label
+                                        Text="{Binding IsDamaged}"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                                <Border
+                                    Stroke="Green"
+                                    StrokeThickness="1"
+                                    Padding="3"
+                                    Grid.Column="7">
+                                    <Label
+                                        Text="{Binding PartNo}"
+                                        LineBreakMode="WordWrap"
+                                        VerticalTextAlignment="Center"
+                                        HorizontalTextAlignment="Center" />
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <!-- الرسالة التي ستظهر عند عدم وجود بيانات -->
+                <Label
+                    x:Name="NoDataLabel"
+                    Text="لا يوجد بيانات"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start"
+                    FontAttributes="Bold"
+                    FontSize="20"
+                    Grid.Row="3"
+                    TextColor="Red"
+                    IsVisible="False" />
+                <ActivityIndicator
+                    x:Name="LoadingIndicator"
+                    IsRunning="False"
+                    IsVisible="False"
+                    Color="LightGreen"
+                    Opacity="0.8"
+                    Grid.Row="3"
+                    VerticalOptions="Start"
+                    HorizontalOptions="StartAndExpand" />
+            </Grid>
+        </ScrollView>
+        <Grid
+            Grid.Row="3">
+            <!-- أدوات التنقل بين الصفحات -->
+            <HorizontalStackLayout
+                Grid.Row="3"
+                Spacing="7">
+                <Button
+                    x:Name="NextButton"
+                    BackgroundColor="#4CAF50"
+                    Text="التالي" FontSize="Body"
+                    TextColor="White"
+                    Clicked="NextPage_Clicked" />
+                <Label
+                    x:Name="PagesNumber"
+                    Text="__/__" FontSize="Body"
+                    VerticalOptions="Center" />
+                <Button
+                    x:Name="PreviousButton"
+                    BackgroundColor="#4CAF50"
+                    Text="السابق"
+                    FontSize="Body"
+                    TextColor="White"
+                    Clicked="PreviousPage_Clicked" />
+                <Label
+                    x:Name="RowNumber"
+                    Text="عدد الصفوف ( 0 )"
+                    FontSize="Body"
+                    VerticalOptions="Center" />
+            </HorizontalStackLayout>
+        </Grid>
+        <!-- مؤشر التحميل -->
+    </Grid>
+</ContentView>
